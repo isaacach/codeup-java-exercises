@@ -8,6 +8,8 @@ public class HelloWorld {
 
         String myString = "cool";
 
+        char myChar = 'i';
+
         int x = 5;
         System.out.println(x++);
         System.out.println(x);
@@ -20,16 +22,16 @@ public class HelloWorld {
         i = i + 5;
         i += 5;
 
-        int x = 3;
-        int y = 4;
-        y *= x
+        int q = 3;
+        int w = 4;
+        q *= w;
 
-        int x = 10;
-        int y = 2;
-        x /= y;
-        y -= x;
+        int o = 10;
+        int p = 2;
+        o /= p;
+        p -= o;
 
-
+//        short num = 40000;
 
 
     }
