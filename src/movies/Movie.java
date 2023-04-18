@@ -63,26 +63,12 @@ public class Movie {
                     "5 - view movies in the scifi category\n" +
                     "Enter your choice: ");
             switch (choice) {
-                case 0:
-                    return;
-                case 1:
-                    Movie.getAllMovies(setMovies);
-                    break;
-                case 2:
-                    Movie.getMovieByCategory(setMovies, "animated");
-                    break;
-                case 3:
-                    Movie.getMovieByCategory(setMovies, "drama");
-                    break;
-                case 4:
-                    Movie.getMovieByCategory(setMovies, "horror");
-                    break;
-                case 5:
-                    Movie.getMovieByCategory(setMovies, "scifi");
-                    break;
-                case 6:
-                    Movie.getMovieByCategory(setMovies, "musical");
-                    break;
+                case 1 -> Movie.getAllMovies(setMovies);
+                case 2 -> Movie.getMovieByCategory(setMovies, "animated");
+                case 3 -> Movie.getMovieByCategory(setMovies, "drama");
+                case 4 -> Movie.getMovieByCategory(setMovies, "horror");
+                case 5 -> Movie.getMovieByCategory(setMovies, "scifi");
+                case 6 -> Movie.getMovieByCategory(setMovies, "musical");
             }
 
         }
