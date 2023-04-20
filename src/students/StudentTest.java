@@ -1,6 +1,6 @@
-package src;
+package src.students;
 
-import java.util.ArrayList;
+import src.students.Student;
 
 public class StudentTest {
     public static void main(String[] args) {

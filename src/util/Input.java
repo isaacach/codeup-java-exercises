@@ -2,14 +2,17 @@ package src.util;
 
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Input {
     private Scanner scanner;
+//    Input input = new Input();
 
     public Input() {
         this.scanner = new Scanner(System.in);    }
 
     public String getString() {
-        System.out.println("Enter a string: ");
+//        System.out.println("Enter a string: ");
         return scanner.nextLine();
     }
 
@@ -31,64 +34,149 @@ public class Input {
     }
 
     public int getInt(int min, int max) {
-        System.out.printf("Enter a number between %d and %d: %n", min, max);
-        int input = scanner.nextInt();
-        if (input > min && input < max) {
-            return input;
+        Input input = new Input();
+        try {
+            System.out.printf("Enter a number between %d and %d: %n", min, max);
+            String userInput = input.getString();
+            int number = Integer.valueOf(userInput);
+            if (number > min && number < max) {
+                return number;
+            }
+            System.out.println("Invalid, enter a number within the range: ");
+            return getInt(min, max);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            getInt(min, max);
+            return 0;
         }
-        System.out.println("Invalid, enter a number within the range: ");
-        return getInt(min, max);
     }
 
     public int getInt(int min, int max, String prompt) {
-        System.out.println(prompt);
-        int input = scanner.nextInt();
-        if (input > min && input < max) {
-            return input;
+        Input input = new Input();
+        try {
+            System.out.printf(prompt);
+            String userInput = input.getString();
+            int number = Integer.valueOf(userInput);
+            if (number > min && number < max) {
+                return number;
+            }
+            System.out.println("Invalid, enter a number within the range: ");
+            return getInt(min, max);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            getInt(min, max);
+            return 0;
         }
-        System.out.println("Invalid, enter a number within the range: ");
-        return getInt(min, max);
     }
 
     public int getInt() {
-//        System.out.println("Enter an integer: ");
-        return scanner.nextInt();
+        Input input = new Input();
+        try {
+            System.out.println("Enter an integer: ");
+            String userInput =  input.getString();
+            return Integer.valueOf(userInput);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a number, try again");
+            return getInt();
+        }
     }
 
     public int getInt(String prompt) {
-        System.out.println(prompt);
-        return scanner.nextInt();
+        Input input = new Input();
+        try {
+            System.out.println(prompt);
+            String userInput =  input.getString();
+            return Integer.valueOf(userInput);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a number, try again");
+            return getInt();
+        }
     }
 
     public double getDouble(double min, double max){
-        System.out.println("Enter a decimal number: ");
-        double input = scanner.nextDouble();
-        if (input > min && input < max) {
-            return input;
+        Input input = new Input();
+        try {
+            System.out.println("Enter a decimal number: ");
+            String userInput = input.getString();
+            double number = Double.valueOf(userInput);
+            if (number > min && number < max) {
+                return number;
+            }
+            System.out.println("Invalid, enter a number within the range: ");
+            return getInt((int) min, (int) max);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a decimal number, try again.");;
+            getDouble();
+            return 0;
         }
-        System.out.println("Invalid entry, enter a decimal number within the range");
-        return getDouble();
     }
 
     public double getDouble(double min, double max, String prompt){
-        System.out.println(prompt);
-        double input = scanner.nextDouble();
-        if (input > min && input < max) {
-            return input;
+        Input input = new Input();
+        try {
+            System.out.println(prompt);
+            String userInput = input.getString();
+            double number = Double.valueOf(userInput);
+            if (number > min && number < max) {
+                return number;
+            }
+            System.out.println("Invalid, enter a number within the range: ");
+            return getInt((int) min, (int) max);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a decimal number, try again.");;
+            getDouble(min, max);
+            return 0;
         }
-        System.out.println("Invalid entry, enter a decimal number within the range");
-        return getDouble();
     }
 
     public double getDouble(){
-        System.out.println("Enter a decimal number: ");
-        return scanner.nextDouble();
+        Input input = new Input();
+        try {
+            System.out.println("Enter a decimal number: ");
+            String userInput =  input.getString();
+            return Double.valueOf(userInput);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a decimal number, try again");
+            return getDouble();
+        }
     }
 
     public double getDouble(String prompt){
-        System.out.println(prompt);
-        return scanner.nextDouble();
+        Input input = new Input();
+        try {
+            System.out.println(prompt);
+            String userInput =  input.getString();
+            return Double.valueOf(userInput);
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a decimal number, try again");
+            return getDouble();
+        }
     }
 
+    public int getBinary(String prompt){
+        try {
+            System.out.println(prompt);
+            Input input = new Input();
+            String userInput =  input.getString();
+            return parseInt(userInput, 2);
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("That is not a binary number, try again");
+            return getBinary(prompt);
+        }
+    }
+
+    public int getHex(String prompt){
+        try {
+            System.out.println(prompt);
+            Input input = new Input();
+            String userInput =  input.getString();
+            return Integer.parseInt(userInput, 16);
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("That is not a hexadecimal, try again");
+            return getHex(prompt);
+        }
+    }
 
 }

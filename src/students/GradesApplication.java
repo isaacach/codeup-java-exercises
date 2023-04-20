@@ -1,8 +1,10 @@
-package src;
+package src.students;
 
+import src.students.Student;
 import src.util.Input;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class GradesApplication {
     public static void main(String[] args) {
@@ -43,10 +45,7 @@ public class GradesApplication {
 //        } else {
 //            System.out.println("have a good day");
 //        }
-
-
     }
-
     public static void userInput(){
         Student student1 = new Student("cole");
         student1.addGrade(76);
@@ -80,20 +79,19 @@ public class GradesApplication {
                 "Or type ca to see the overall class average\n" +
                 "Or type csv to see a csv of all students");
         String user = input.getString();
+//        Set<String> userNames = students.keySet();
         if (user.equalsIgnoreCase("ca")) {
             double one = students.get("cole8734").getGradeAverage();
             double two = students.get("mikey45").getGradeAverage();
             double three = students.get("mikenike23").getGradeAverage();
             double four = students.get("donny99").getGradeAverage();
-            System.out.printf("Class average => %f%n", (one + two + three + four) / 4);
+            System.out.printf("Class average => %.1f%n", (one + two + three + four) / 4);
             userInput();
-        }
-        if (user.equalsIgnoreCase("csv")) {
+        } else if (user.equalsIgnoreCase("csv")) {
             students.forEach((key, value)->{
                 System.out.printf("%s, %s, %.1f%n",students.get(key).getName(), key, students.get(key).getGradeAverage());
             });
-        }
-        if (!students.containsKey(user)){
+        } else if (!students.containsKey(user)){
             System.out.println("sorry, no student was found with that name");
             boolean cont = input.yesNo("would you like to try again?");
             if (cont) {

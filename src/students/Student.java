@@ -1,4 +1,4 @@
-package src;
+package src.students;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class Student {
     };
     // returns the average of the students grades
     public double getGradeAverage(){
-        return (grades.stream().mapToInt(i -> i).sum()) / grades.size();
+        return grades.stream().mapToInt(i -> i).sum() / grades.size();
     };
 
     public ArrayList<Integer> getGrades() {
